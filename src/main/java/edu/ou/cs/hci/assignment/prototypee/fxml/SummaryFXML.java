@@ -28,10 +28,12 @@ public class SummaryFXML extends BorderPane
 	// Private Members
 	//**********************************************************************
 
-	// TODO #01a: Add and name members each of the widgets loaded from FXML for
+	// Add members for each of the widgets loaded from FXML for
 	// use in the summary area of the CollectionPane. The names must match both
 	// the summary widgets in CollectionPane.java and the fx:ids in Summary.fxml
 	@FXML public Label			summaryTitle;
+	@FXML public ImageView summaryImage;
+	@FXML public Label summaryYear, summaryGenre, summaryRating, summaryRuntime;
 
 	//**********************************************************************
 	// Constructors and Finalizer
