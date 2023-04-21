@@ -384,6 +384,10 @@ public final class CollectionPane extends AbstractPane
 			// The names must match the ones in Summary.FXML. Hint: See the list
 			// of members above to see which widgets are used in the summary...
 			summaryTitle = pane.summaryTitle;
+			summaryImage = pane.summaryImage;
+			summaryYear = pane.summaryYear;
+			summaryGenre = pane.summaryGenre;
+			summaryRuntime = pane.summaryRuntime;
 
 			// ...then swap the comments on the next two lines to use the FXML.
 			//return pane;					//  <--- Uncomment this line
