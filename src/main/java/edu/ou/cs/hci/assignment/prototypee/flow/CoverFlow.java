@@ -56,7 +56,7 @@ public final class CoverFlow extends AbstractPane
 	//**********************************************************************
 
 	// You can adjust the speed and smoothness of animation if you like.
-	private static final double	FRAMERATE = 40.0;
+	private static final double	FRAMERATE = 60.0;
 	private static final Duration	DURATION = Duration.seconds(0.6);
 
 	//**********************************************************************
