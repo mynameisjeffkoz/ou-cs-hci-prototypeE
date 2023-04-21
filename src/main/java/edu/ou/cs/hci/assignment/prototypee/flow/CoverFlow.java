@@ -33,6 +33,8 @@ import javafx.util.Duration;
 import edu.ou.cs.hci.assignment.prototypee.*;
 import edu.ou.cs.hci.assignment.prototypee.pane.AbstractPane;
 
+import javax.swing.*;
+
 //******************************************************************************
 
 /**
@@ -86,7 +88,9 @@ public final class CoverFlow extends AbstractPane
 	private final SimpleDoubleProperty	locus;		// Animated index point
 	private Animation					animation;
 
-	// TODO #04a: Add members for your left and right navigation buttons here.
+	// Add members for left and right navigation buttons
+	private Button leftButton, leftSkipButton, leftEndButton;
+	private Button rightButton, rightSkipButton, rightEndButton;
 
 	// Handlers
 	private final ActionHandler		actionHandler;
@@ -212,6 +216,21 @@ public final class CoverFlow extends AbstractPane
 
 		// TODO #04b: Create your buttons and add them to the base pane on top.
 		// A good way is to put them all in a Group and add that to the pane.
+		leftButton = new Button("<-");
+		leftSkipButton = new Button("<<-");
+		leftEndButton = new Button("|<-");
+
+		Group leftButtonGroup = new Group();
+		leftButtonGroup.getChildren().addAll(leftSkipButton,leftButton,leftEndButton);
+
+		rightButton = new Button("->");
+		rightSkipButton = new Button("->>");
+		rightEndButton = new Button("->|");
+
+		Group rightButtonGroup = new Group();
+		rightButtonGroup.getChildren().addAll(leftSkipButton, leftButton, leftEndButton);
+
+		base.getChildren().addAll(leftButtonGroup, rightButtonGroup);
 
 		return base;
 	}
@@ -223,11 +242,25 @@ public final class CoverFlow extends AbstractPane
 	// TODO #5a: Register each of your buttons with the action handler.
 	private void	registerWidgetHandlers()
 	{
+		leftButton.setOnAction(actionHandler);
+		leftEndButton.setOnAction(actionHandler);
+		leftSkipButton.setOnAction(actionHandler);
+
+		rightButton.setOnAction(actionHandler);
+		rightEndButton.setOnAction(actionHandler);
+		rightSkipButton.setOnAction(actionHandler);
 	}
 
 	// TODO #5b: Unregister each of your buttons with the action handler.
 	private void	unregisterWidgetHandlers()
 	{
+		leftButton.setOnAction(null);
+		leftEndButton.setOnAction(null);
+		leftSkipButton.setOnAction(null);
+
+		rightButton.setOnAction(null);
+		rightEndButton.setOnAction(null);
+		rightSkipButton.setOnAction(null);
 	}
 
 	//**********************************************************************
