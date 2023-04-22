@@ -28,12 +28,22 @@
   <!-- Add any necessary imports (like in Java files) above. -->
   <top>
     <Label fx:id="summaryTitle"/>
-    <ImageView fx:id="summaryImage"/>
-    <Label fx:id="summaryYear"/>
-    <Label fx:id="summaryGenre"/>
-    <Label fx:id="summaryRating"/>
-    <Label fx:id="summaryRuntime"/>
   </top>
+
+  <center>
+    <VBox fx:id="centerVBox" prefWidth="150" alignment="CENTER">
+      <ImageView fx:id="summaryImage" fitWidth="150"/>
+    </VBox>
+  </center>
+
+  <bottom>
+    <VBox fx:id="bottomVBox" prefWidth="150" alignment="BASELINE_CENTER">
+      <Label fx:id="summaryYear"/>
+      <Label fx:id="summaryGenre"/>
+      <Label fx:id="summaryRating"/>
+      <Label fx:id="summaryRuntime"/>
+    </VBox>
+  </bottom>
 
   <!-- Declare which FXCSS file(s) to load styles from. -->
   <stylesheets>

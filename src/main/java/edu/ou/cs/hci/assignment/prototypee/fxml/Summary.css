@@ -23,6 +23,7 @@
 .root
 {
     -fx-background-color: linear-gradient(to bottom, #56c1ff, #f8ba00);
+    -fx-padding: 35,15,25,15;
 }
 
 /******************************************************************************/
@@ -38,12 +39,15 @@
     -fx-font-size: 16;
     -fx-font-weight: bold;
     -fx-effect: dropshadow(gaussian, gray, 5, 0, 3, 3);
+    -fx-pref-width: 150;
 
 }
 
 .image-view
 {
     -fx-effect: dropshadow(gaussian, gray, 5, 0, 3, 3);
+    -fx-pref-width: 150;
+    -fx-pref-height: 225;
 }
 
 /******************************************************************************/
