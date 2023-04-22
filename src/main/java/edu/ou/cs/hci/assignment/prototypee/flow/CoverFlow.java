@@ -228,7 +228,7 @@ public final class CoverFlow extends AbstractPane
 		rightEndButton = new Button("->|");
 
 		Group rightButtonGroup = new Group();
-		rightButtonGroup.getChildren().addAll(leftSkipButton, leftButton, leftEndButton);
+		rightButtonGroup.getChildren().addAll(rightSkipButton, rightButton, rightEndButton);
 
 		base.getChildren().addAll(leftButtonGroup, rightButtonGroup);
 
