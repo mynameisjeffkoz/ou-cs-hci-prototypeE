@@ -402,7 +402,7 @@ public final class CoverFlow extends AbstractPane
 			item.setEffect(new Reflection());
 		}
 
-		// TODO #06: Make any necessary updates to the layout and styling of
+		// Updates the layout and styling of
 		// your buttons below. Apply the expected enabling/disabling to each
 		// one. One way to do this is to use the flow's width and height to
 		// calculate absolute positions and sizes for each button.
@@ -471,8 +471,36 @@ public final class CoverFlow extends AbstractPane
 				(List<Movie>)controller.getProperty("movies");
 			Movie			movie = (Movie)controller.getProperty("movie");
 
+			int index = movies.indexOf(movie);
+
 			// TODO #07a: Update which movie is selected in the model, based on
 			// which button was clicked, following the design specification.
+			if (source == rightButton) {
+				index += 1;
+			}
+			else if (source == rightSkipButton) {
+				index += 5;
+			}
+			else if (source == rightEndButton) {
+				index = Integer.MAX_VALUE;
+			}
+			else if (source == leftButton) {
+				index -= 1;
+			}
+			else if (source == leftSkipButton) {
+				index -= 5;
+			}
+			else if (source == leftEndButton) {
+				index = 0;
+			}
+
+			if (index >= movies.size())
+				index = movies.size() - 1;
+			else if (index < 0)
+				index = 0;
+
+			movie = movies.get(index);
+			controller.setProperty("movie", movie);
 		}
 	}
 
