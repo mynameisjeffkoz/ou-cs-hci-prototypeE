@@ -552,6 +552,35 @@ public final class CoverFlow extends AbstractPane
 		// Use HOME for first, END for last, PAGE UP for +5, PAGE DOWN
 		// for -5, LEFT ARROW for -1, RIGHT ARROW for +1.
 
+		int index = movies.indexOf(movie);
+
+		if (e.getCode().toString() == "RIGHT") {
+			index += 1;
+		}
+		else if (e.getCode().toString() == "PAGE_UP") {
+			index += 5;
+		}
+		else if (e.getCode().toString() == "END") {
+			index = Integer.MAX_VALUE;
+		}
+		else if (e.getCode().toString() == "LEFT") {
+			index -= 1;
+		}
+		else if (e.getCode().toString() == "PAGE_DOWN") {
+			index -= 5;
+		}
+		else if (e.getCode().toString() == "HOME") {
+			index = 0;
+		}
+
+		if (index >= movies.size())
+			index = movies.size() - 1;
+		else if (index < 0)
+			index = 0;
+
+		movie = movies.get(index);
+		controller.setProperty("movie", movie);
+
 		e.consume();	// Consume all presses so they doesn't propagate up
 	}
 
