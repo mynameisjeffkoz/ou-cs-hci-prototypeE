@@ -387,11 +387,12 @@ public final class CollectionPane extends AbstractPane
 			summaryImage = pane.summaryImage;
 			summaryYear = pane.summaryYear;
 			summaryGenre = pane.summaryGenre;
+			summaryRating = pane.summaryRating;
 			summaryRuntime = pane.summaryRuntime;
 
 			// ...then swap the comments on the next two lines to use the FXML.
-			//return pane;					//  <--- Uncomment this line
-			return buildMovieView();		//  <--- Comment this line
+			return pane;					//  <--- Uncomment this line
+			//return buildMovieView();		//  <--- Comment this line
 		}
 		catch (Exception ex)
 		{
