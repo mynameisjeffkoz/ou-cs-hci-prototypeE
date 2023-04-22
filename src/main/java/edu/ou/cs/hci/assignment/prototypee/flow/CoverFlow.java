@@ -91,6 +91,7 @@ public final class CoverFlow extends AbstractPane
 	// Add members for left and right navigation buttons
 	private Button leftButton, leftSkipButton, leftEndButton;
 	private Button rightButton, rightSkipButton, rightEndButton;
+	private Group navigationButtonGroup;
 
 	// Handlers
 	private final ActionHandler		actionHandler;
@@ -220,17 +221,14 @@ public final class CoverFlow extends AbstractPane
 		leftSkipButton = new Button("<<-");
 		leftEndButton = new Button("|<-");
 
-		Group leftButtonGroup = new Group();
-		leftButtonGroup.getChildren().addAll(leftSkipButton,leftButton,leftEndButton);
-
 		rightButton = new Button("->");
 		rightSkipButton = new Button("->>");
 		rightEndButton = new Button("->|");
 
-		Group rightButtonGroup = new Group();
-		rightButtonGroup.getChildren().addAll(rightSkipButton, rightButton, rightEndButton);
+		navigationButtonGroup = new Group(leftButton, leftEndButton, leftSkipButton,
+				rightButton, rightEndButton, rightSkipButton);
 
-		base.getChildren().addAll(leftButtonGroup, rightButtonGroup);
+		base.getChildren().addAll(navigationButtonGroup);
 
 		return base;
 	}
@@ -408,6 +406,21 @@ public final class CoverFlow extends AbstractPane
 		// your buttons below. Apply the expected enabling/disabling to each
 		// one. One way to do this is to use the flow's width and height to
 		// calculate absolute positions and sizes for each button.
+
+		int padding = 30;
+		double leftPosition = -cx + padding;
+		double rightPosition = cx - padding;
+
+		double topPosition = -cy + padding;
+		double bottomPosition = cy - padding;
+
+		leftButton.relocate(leftPosition,0);
+		leftSkipButton.relocate(leftPosition,topPosition);
+		leftEndButton.relocate(leftPosition, bottomPosition);
+
+		rightButton.relocate(rightPosition, 0);
+		rightSkipButton.relocate(rightPosition, topPosition);
+		rightEndButton.relocate(rightPosition, bottomPosition);
 	}
 
 	private void	updateAnimation(Movie movie)
