@@ -241,12 +241,12 @@ public final class CoverItem extends StackPane
 	{
 		if (selected)	// Make the item appear brighter
 		{
-			titleLabel.setTextFill(Color.YELLOW);			// More stylings...
+			titleLabel.setTextFill(Color.BLACK);			// More stylings...
 			titleLabel.setEffect(GLOW);						// ...as examples...
 		}
 		else			// Make the item appear darker
 		{
-			titleLabel.setTextFill(Color.WHITE);				// ...change for...
+			titleLabel.setTextFill(Color.BLACK);				// ...change for...
 			titleLabel.setEffect(null);						// ...your design!
 		}
 	}
@@ -259,10 +259,10 @@ public final class CoverItem extends StackPane
 	private void	registerPropertyListeners()
 	{
 		movie.titleProperty().addListener(this::handleChangeS);
-		//movie.imageProperty().addListener(this::handleChangeS);
+		movie.imageProperty().addListener(this::handleChangeS);
 
 		//movie.yearProperty().addListener(this::handleChangeI);
-		//movie.ratingProperty().addListener(this::handleChangeS);
+		movie.ratingProperty().addListener(this::handleChangeS);
 		//movie.runtimeProperty().addListener(this::handleChangeI);
 
 		//movie.awardPictureProperty().addListener(this::handleChangeB);
@@ -270,12 +270,12 @@ public final class CoverItem extends StackPane
 		//movie.awardCinematographyProperty().addListener(this::handleChangeB);
 		//movie.awardActingProperty().addListener(this::handleChangeB);
 
-		//movie.averageReviewScoreProperty().addListener(this::handleChangeD);
+		movie.averageReviewScoreProperty().addListener(this::handleChangeD);
 		//movie.numberOfReviewsProperty().addListener(this::handleChangeI);
-		//movie.genreProperty().addListener(this::handleChangeI);
+		movie.genreProperty().addListener(this::handleChangeI);
 
 		//movie.directorProperty().addListener(this::handleChangeS);
-		//movie.isAnimatedProperty().addListener(this::handleChangeB);
+		movie.isAnimatedProperty().addListener(this::handleChangeB);
 		//movie.isColorProperty().addListener(this::handleChangeB);
 
 		//movie.summaryProperty().addListener(this::handleChangeS);
@@ -286,10 +286,10 @@ public final class CoverItem extends StackPane
 	private void	unregisterPropertyListeners()
 	{
 		movie.titleProperty().removeListener(this::handleChangeS);
-		//movie.imageProperty().removeListener(this::handleChangeS);
+		movie.imageProperty().removeListener(this::handleChangeS);
 
 		//movie.yearProperty().removeListener(this::handleChangeI);
-		//movie.ratingProperty().removeListener(this::handleChangeS);
+		movie.ratingProperty().removeListener(this::handleChangeS);
 		//movie.runtimeProperty().removeListener(this::handleChangeI);
 
 		//movie.awardPictureProperty().removeListener(this::handleChangeB);
@@ -297,12 +297,12 @@ public final class CoverItem extends StackPane
 		//movie.awardCinematographyProperty().removeListener(this::handleChangeB);
 		//movie.awardActingProperty().removeListener(this::handleChangeB);
 
-		//movie.averageReviewScoreProperty().removeListener(this::handleChangeD);
+		movie.averageReviewScoreProperty().removeListener(this::handleChangeD);
 		//movie.numberOfReviewsProperty().removeListener(this::handleChangeI);
-		//movie.genreProperty().removeListener(this::handleChangeI);
+		movie.genreProperty().removeListener(this::handleChangeI);
 
 		//movie.directorProperty().removeListener(this::handleChangeS);
-		//movie.isAnimatedProperty().removeListener(this::handleChangeB);
+		movie.isAnimatedProperty().removeListener(this::handleChangeB);
 		//movie.isColorProperty().removeListener(this::handleChangeB);
 
 		//movie.summaryProperty().removeListener(this::handleChangeS);

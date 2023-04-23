@@ -395,6 +395,12 @@ public final class CoverFlow extends AbstractPane
 			// Make items full-size in the middle, half-size toward the ends
 			double	s = Math.max(0.5, 1.00 - 0.05 * delta * delta);
 
+			if (index != focus) {
+				item.setEffect(new ColorAdjust(0,-0.1,-1,0));
+			}
+			else
+				item.setEffect(new ColorAdjust(0,0,0,0));
+
 			item.setScaleX(s);
 			item.setScaleY(s);
 
