@@ -16,14 +16,16 @@ package edu.ou.cs.hci.assignment.prototypee.flow;
 //import java.lang.*;
 import java.util.List;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.Cursor;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.effect.*;
 import javafx.scene.image.*;
-import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.*;
 import edu.ou.cs.hci.assignment.prototypee.Movie;
 
@@ -83,7 +85,11 @@ public final class CoverItem extends StackPane
 	private boolean				selected;	// Selected in the coverflow?
 
 	// TODO #08: Add members for the elements used in your item layout.
-	private Label					label;
+	private Label titleLabel;
+	private ImageView poster;
+	private Rectangle itemContainer;
+	private Rectangle genreBar;
+	private Rectangle reviewBox, reviewFill;
 
 	//**********************************************************************
 	// Constructors and Finalizer
@@ -156,15 +162,41 @@ public final class CoverItem extends StackPane
 	// TODO #09a: Create default layout and styling of the item.
 	private void	createLayout()
 	{
+		itemContainer = new Rectangle(120, 160);
+		itemContainer.setFill(Color.GAINSBORO);
+		itemContainer.setStroke(Color.BLACK);
+		itemContainer.setStrokeWidth(5.0);
+		poster = new ImageView();
+
+		reviewBox = new Rectangle(100,20);
+		reviewBox.setStroke(Color.BLACK);
+		reviewBox.setStrokeType(StrokeType.OUTSIDE);
+		reviewBox.setStrokeWidth(2.0);
+		reviewBox.setFill(Color.TRANSPARENT);
+
+		reviewFill = new Rectangle(0,20);
+		reviewFill.setStroke(Color.GOLD);
+		reviewFill.setStrokeType(StrokeType.INSIDE);
+		reviewFill.setFill(Color.GOLDENROD);
+
 		// Create, style, and layout widgets in their initial state.
 		// Focus on the aspects that don't change when the item is selected.
-		label = new Label();
-		label.setFont(FONT);							// These stylings...
-		label.setTextAlignment(TextAlignment.CENTER);	// ...are examples...
-		label.setRotate(45.0);							// ...make them...
+		titleLabel = new Label();
+		titleLabel.setFont(Font.font("sans-serif",13.0));
+		titleLabel.setTextAlignment(TextAlignment.CENTER);
+		titleLabel.setMaxWidth(56);
+		titleLabel.setTextOverrun(OverrunStyle.ELLIPSIS);
+
 
 		// You can use more levels of pane to allow application of extra effects
-		StackPane	pane = new StackPane(label);
+		StackPane centered = new StackPane(titleLabel);
+		titleLabel.setTranslateY(35);
+		AnchorPane	pane = new AnchorPane(itemContainer,poster,reviewBox, reviewFill, centered);
+		centered.relocate(30,80);
+		itemContainer.relocate(0,0);
+		poster.relocate(30,24);
+		reviewBox.relocate(10,135);
+		reviewFill.relocate(12,137);
 
 		pane.setEffect(new DropShadow());				// ...your own!
 
@@ -176,11 +208,31 @@ public final class CoverItem extends StackPane
 	{
 		if (movie == null)
 		{
-			label.setText("");
+			titleLabel.setText("");
 		}
 		else
 		{
-			label.setText(movie.getTitle());
+			titleLabel.setText(movie.getTitle());
+			poster.setImage(movie.getImageAsImage(FX_ICON,60,90));
+			reviewFill.setWidth(100 * movie.getAverageReviewScore() / 10);
+			String rating = movie.getRating();
+			switch (rating) {
+				case "G":
+					break;
+				case "PG":
+					itemContainer.setArcWidth(0);
+					itemContainer.setArcHeight(0);
+					break;
+				case "PG-13":
+					itemContainer.setArcWidth(20);
+					itemContainer.setArcHeight(20);
+					break;
+				case "R":
+					itemContainer.setArcWidth(20);
+					itemContainer.setArcHeight(20);
+					itemContainer.getStrokeDashArray().addAll(10.0,10.0);
+					break;
+			}
 		}
 	}
 
@@ -189,13 +241,13 @@ public final class CoverItem extends StackPane
 	{
 		if (selected)	// Make the item appear brighter
 		{
-			label.setTextFill(Color.YELLOW);			// More stylings...
-			label.setEffect(GLOW);						// ...as examples...
+			titleLabel.setTextFill(Color.YELLOW);			// More stylings...
+			titleLabel.setEffect(GLOW);						// ...as examples...
 		}
 		else			// Make the item appear darker
 		{
-			label.setTextFill(Color.WHITE);				// ...change for...
-			label.setEffect(null);						// ...your design!
+			titleLabel.setTextFill(Color.WHITE);				// ...change for...
+			titleLabel.setEffect(null);						// ...your design!
 		}
 	}
 
